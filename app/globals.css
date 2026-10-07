@@ -1,0 +1,276 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════
+   MARLIK.AI — Design Tokens
+   Light & Elegant (Achaemenid White/Gold)
+═══════════════════════════════════════════════ */
+
+:root {
+  /* Gold Palette — Vibrant & Elegant */
+  --gold-50:  #fffbeb;
+  --gold-100: #fef3c7;
+  --gold-200: #fde68a;
+  --gold-300: #fcd34d;
+  --gold-400: #fbbf24;
+  --gold-500: #f59e0b;
+  --gold-600: #d97706;
+  --gold-700: #b45309;
+
+  /* Light Palette — Sophisticated & Warm */
+  --bg-primary:   #fdfcf9;
+  --bg-secondary: #f7f4f0;
+  --bg-tertiary:  #efede9;
+
+  /* Dark Palette for Text */
+  --text-primary:   #1a1d23;
+  --text-secondary: #565d6d;
+  --text-muted:     #949fb1;
+
+  /* Borders */
+  --border-gold:   rgba(212, 168, 32, 0.2);
+  --border-subtle: rgba(0, 0, 0, 0.04);
+
+  /* Radii */
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 32px;
+  --radius-xl: 48px;
+
+  /* Shadows */
+  --shadow-gold: 0 15px 45px rgba(212, 168, 32, 0.12);
+  --shadow-card: 0 20px 60px rgba(0, 0, 0, 0.03);
+  --shadow-float: 0 10px 40px rgba(0, 0, 0, 0.08);
+  
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.5);
+  --glass-border: rgba(255, 255, 255, 0.5);
+  --glass-blur: 16px;
+}
+
+/* ═══════ Reset & Base ═══════ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: auto;
+  direction: rtl;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Vazirmatn', sans-serif;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img { max-width: 100%; display: block; }
+
+/* ═══════ Scrollbar ═══════ */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-secondary); }
+::-webkit-scrollbar-thumb {
+  background: var(--gold-400);
+  border-radius: 99px;
+}
+
+/* ═══════ Selection ═══════ */
+::selection {
+  background: var(--gold-100);
+  color: var(--gold-700);
+}
+
+/* ═══════ Keyframes ═══════ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+@keyframes ornament-pulse {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 0.8; }
+}
+@keyframes bar-grow {
+  from { width: 0; }
+}
+
+/* ═══════ Utility Classes ═══════ */
+.fade-up   { animation: fadeUp 0.7s ease both; }
+.fade-in   { animation: fadeIn 0.6s ease both; }
+
+.gold-gradient {
+  background: linear-gradient(135deg, var(--gold-500), var(--gold-700), var(--gold-500));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+
+.section-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+.section-subtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--text-secondary);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section {
+  padding: 8rem 0;
+  position: relative;
+}
+
+.gold-line {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--gold-400), var(--gold-600));
+  border-radius: 99px;
+  margin: 1.5rem auto 0;
+}
+
+/* Card base */
+.card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: var(--shadow-card);
+  position: relative;
+  overflow: hidden;
+  will-change: transform, opacity;
+}
+.card:hover {
+  transform: translateY(-12px);
+  border-color: var(--gold-300);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.08), var(--shadow-gold);
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+}
+
+/* Badge */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--gold-50);
+  border: 1px solid var(--gold-200);
+  color: var(--gold-700);
+  padding: 8px 20px;
+  border-radius: 99px;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+/* Button */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--gold-500);
+  color: white;
+  font-family: 'Vazirmatn', sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 1rem 2.5rem;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn-primary:hover {
+  background: var(--gold-600);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  color: var(--gold-600);
+  font-family: 'Vazirmatn', sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 1rem 2.5rem;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--gold-500);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn-outline:hover {
+  background: var(--gold-50);
+  transform: translateY(-3px);
+}
+
+/* Grid helpers */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: var(--gold-600);
+  margin-bottom: 1rem;
+}
+
+.ornament-bar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.ornament-bar span {
+  width: 14px;
+  height: 14px;
+  background: var(--gold-500);
+  border-radius: 3px;
+  animation: ornament-pulse 2.5s ease infinite;
+}
