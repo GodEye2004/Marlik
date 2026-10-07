@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import SmoothScroll from "./components/SmoothScroll";
 
@@ -12,6 +12,12 @@ export const metadata: Metadata = {
     locale: "fa_IR",
     type: "website",
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#fdfcf9",
 };
 
 export default function RootLayout({
