@@ -2,7 +2,12 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  type Variants,
+  type Transition,
+} from "framer-motion";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -10,9 +15,13 @@ export default function Home() {
   const closeMenu = () => setMenuOpen(false);
 
   // Optimization: Using simpler spring transitions for better performance
-  const springTransition = { type: "spring", damping: 25, stiffness: 120 };
+  const springTransition: Transition = {
+    type: "spring",
+    damping: 25,
+    stiffness: 120,
+  };
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -23,7 +32,7 @@ export default function Home() {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
@@ -32,7 +41,7 @@ export default function Home() {
     },
   };
 
-  const revealVariants = {
+  const revealVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
